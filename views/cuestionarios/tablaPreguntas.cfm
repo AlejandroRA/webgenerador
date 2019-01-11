@@ -37,6 +37,9 @@
 		</tr>
 	</thead>
 </table>
+<link rel="stylesheet" type="text/css" href="/includes/css/plugins/bootstrap-table/bootstrap-table.min.css">
+<script src="/includes/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/includes/js/plugins/bootstrap-table/locale/bootstrap-table-es-MX.js"></script>
 <script type="text/javascript">
 	var data = [];
 

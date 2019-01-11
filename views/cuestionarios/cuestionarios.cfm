@@ -28,6 +28,8 @@
             </div>
             <div class="contenido-conf">
             </div>
+            <div class="contenido-ver">
+            </div>
     	</div>
     </div>                 
 </div>
@@ -79,6 +81,10 @@
         $('.contenido-ini').show('slice');
         $('.contenido-conf').hide('slice');
 
+    }
+    function cerrarConfiguracion2(){
+        $('.contenido-ini').show('slice');
+        $('.contenido-ver').hide('slice');
     }
 
     

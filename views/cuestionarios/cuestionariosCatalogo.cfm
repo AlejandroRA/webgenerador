@@ -28,6 +28,8 @@
             </div>
             <div class="contenido-conf">
             </div>
+            <div class="contenido-ver">
+            </div>
     	</div>
     </div>                 
 </div>
@@ -52,6 +54,8 @@
 	 $(document).ready(function(){
 	 	cargaCatalogoCuestionarios();
         $('.contenido-conf').hide();
+        $('.contenido-ver').hide();
+        
 	 });
      function cargaCatalogoCuestionarios(){
         $.post('/index.cfm/cuestionarios/cuestionarios/consultarCatalogoCuestionario',{}, function(data){
@@ -81,5 +85,10 @@
     function cerrarConfiguracion(){
         $('.contenido-ini').show('slice');
         $('.contenido-conf').hide('slice');
+    }
+
+    function cerrarConfiguracion2(){
+        $('.contenido-ini').show('slice');
+        $('.contenido-ver').hide('slice');
     }
 </script>

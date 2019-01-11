@@ -140,5 +140,24 @@ component extends="coldbox.system.EventHandler"{
 		event.renderData(type="json", data=resultado);
 	}
 
+	function responderCuestionario(event, rc, prc){
+		prc.cuestionario = cnCuestionarios.consultarCuestionarioCaptura( rc.id);
+		session.cbstorage.captcha = cnCuestionarios.generateString();
+		event.setView("/captura/cuestionario").noLayout();
+	}
+	function captura(event, rc, prc){
+		prc.cuestionario = cnCuestionarios.captura(rc.id, session.cbstorage.captcha, rc.captcha_to, rc.clave);
+		if(prc.cuestionario.estado eq 2){
+			getInstance( "MessageBox@cbmessagebox" ).setMessage("error","El captcha ingresado es incorrecto.");
+			runEvent("cuestionarios.cuestionarios.responderCuestionario");
+		}
+		else if(prc.cuestionario.estado eq 3){
+			getInstance( "MessageBox@cbmessagebox" ).setMessage("error","La clave de acceso de incorrecta.");
+			runEvent("cuestionarios.cuestionarios.responderCuestionario");
+		}else{
+			event.setView(view='/captura/captura', layout='Captura');
+		}
+	}
+
 
 }

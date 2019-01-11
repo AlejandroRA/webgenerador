@@ -125,6 +125,45 @@ component extends="coldbox.system.EventHandler"{
 		return daoCuestionario.eliminarOpcion(opcion);
 	}
 
+	function consultarCuestionarioCaptura( id){
+		return daoCuestionario.consultarCuestionarioCaptura(id);
+	}
+
+	function generateString(){
+		var res = "";
+		for(i = 0; i <= 6; i++){
+			res = res&Chr(RandRange(65, 90));
+		}
+		return res;
+	}
+
+	function getCuestionario( cuestionario){
+		/*Se obtiene primero el formulario de acceso*/
+		var respuesta = structNew();
+		respuesta['formulario'] = daoCuestionario.getCuestionario( cuestionario, 1);
+		respuesta['cuestionario'] = daoCuestionario.getCuestionario( cuestionario, 2);
+		return respuesta;
+		
+	}
+
+	function captura(id, captcha_from, captcha_to, clave){
+		var respuesta = structNew(); 
+		respuesta.cuestionario = consultarCuestionarioCaptura(id);
+		if(captcha_from neq captcha_to){
+			respuesta.estado = 2; 
+		}else if(clave neq respuesta.cuestionario.contrasena){
+			respuesta.estado = 3;
+		}else{
+			respuesta.estado = 1;
+			respuesta.pregunta = getCuestionario(id);
+		}
+
+		return respuesta;
+
+
+	}
+		
+
 	
 
 

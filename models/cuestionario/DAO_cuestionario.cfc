@@ -294,6 +294,33 @@ component extends="coldbox.system.EventHandler"{
 		return result.getprocOutVariables().bandera; ;
 	}
 
+	/*Consultar todos los cuestionarios asociados con un usuario*/
+	function consultarCuestionarioCaptura(id){
+		var spService = new storedproc(); 
+		spService.setDatasource("DS_TT"); 
+		spService.setProcedure("PKG_CUESTIONARIO.sel_cuestionario"); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="in", value=id); 
+		spService.addParam(null=true, cfsqltype="cf_sql_numeric", type="in"); 
+		spService.addProcResult(name="cursor",resultset=1);
+		spService.addParam(cfsqltype="cf_sql_numeric",type="out",variable="bandera"); 
+		result = spService.execute();
+		//return result.getprocOutVariables().bandera; ;
+		return result.getProcResultSets().cursor;
+	}
+
+	function getCuestionario(cuestionario, clase){
+		var spService = new storedproc(); 
+		spService.setDatasource("DS_TT"); 
+		spService.setProcedure("pkg_consultas.gen_cuestionario"); 
+		spService.addParam(null=true,cfsqltype="cf_sql_numeric", type="in"); 
+		spService.addParam(cfsqltype="cf_sql_numeric", type="in",value=cuestionario); 
+		spService.addParam(cfsqltype="cf_sql_numeric", type="in",value=clase); 
+		spService.addProcResult(name="cursor",resultset=1);
+		spService.addParam(cfsqltype="cf_sql_numeric",type="out",variable="bandera"); 
+		result = spService.execute();
+		return result.getProcResultSets().cursor;
+	}
+
 
 	
 

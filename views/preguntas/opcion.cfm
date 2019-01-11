@@ -3,7 +3,7 @@
 <h3>Configuración</h3>
 <form role="form" onsubmit="return edicionOpcion('<cfoutput>#prc.id#</cfoutput>');" method="post">
     <div class="form-group"><label>Descripción</label> <input value="<cfoutput>#prc.opcion.descripcion#</cfoutput>"   id="descripcion_op_ed" type="text" placeholder="Descripción" class="form-control" required=""></div>
-        <div class="form-group"><label>Orden</label> <input value="<cfoutput>#prc.opcion.orden#</cfoutput>"  id="orden_op_ed" type="text" placeholder="Orden" class="form-control" required=""></div>
+        <div class="form-group"><label>Orden</label> <input value="<cfoutput>#prc.opcion.orden#</cfoutput>"  id="orden_op_ed" type="number" placeholder="Orden" class="form-control" required=""></div>
         <div>
             <!--- <button type="button" style="margin-left: 10px;" class="btn  btn-default float-right m-t-n-xs" data-dismiss="modal"><span aria-hidden="true"> Cancelar</span><span class="sr-only">Close</span></button>  --->
             

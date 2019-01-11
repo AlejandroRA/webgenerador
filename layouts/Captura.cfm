@@ -4,8 +4,8 @@
 * Trabajo Terminal
 * Modulo: Principal
 * Sub modulo: Layout principal
-* Fecha: Agosto 18, 2018
-* Descripcion: Vista Layout principal
+* Fecha: Enero 10, 2019
+* Descripcion: Vista Layout de captura
 * Autor: Lucia Ramirez
 * =========================================================================
 ---->
@@ -52,80 +52,20 @@
                 </button>
 
             <!--</div>-->
-            <div class="navbar-collapse collapse" id="navbar">
+        <!---     <div class="navbar-collapse collapse" id="navbar">
                 <ul class="nav navbar-nav mr-auto">
-                    <!--- <li class="active">
-                        <a aria-expanded="false" role="button" href="layouts.html"> Perfil de usuario</a>
-                    </li> --->
-                    <li >
-                        <a aria-expanded="false" role="button" href="/index.cfm/perfilUsuario/perfil"> Perfil de usuario</a>
-                    </li>
-                    <li >
-                        <a aria-expanded="false" role="button" href="/index.cfm/cuestionarios/cuestionarios"> Cuestionarios</a>
-                    </li>
                     
-                    <!--- <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item</a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item</a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item</a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item</a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                            <li><a href="">Menu item</a></li>
-                        </ul>
-                    </li> --->
-
                 </ul>
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <a href="/index.cfm/Main/cerrarSesion">
-                            <i class="fa fa-sign-out"></i> Cerrar sesión
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                
+            </div> --->
         </nav>
         </div>
-        <!--- <div class="wrapper wrapper-content">
-            <div class="container">
-                <cfoutput>
-                    #renderView()#
-                </cfoutput>
-            </div>
-
-        </div> --->
         <cfoutput>
             #renderView()#
         </cfoutput>
         
 
-        <div class="footer">
+        <!--- <div class="footer">
             <div class="float-right">
                 <!--- 10GB of <strong>250GB</strong> Free. ---><strong>Trabajo Terminal</strong>
             </div>
@@ -133,7 +73,7 @@
                 <!--- <strong>Copyright</strong> Example Company &copy; 2014-2018 --->
                 Sistema Generador de Cuestionarios para Análisis Estadístico
             </div>
-        </div>
+        </div> --->
 
         </div>
         </div>
@@ -171,7 +111,7 @@
     <script src="/includes/js/plugins/sweetalert/sweetalert.min.js"></script>
     <script src="/includes/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <!-- Steps -->
-    <script src="/includes/js/plugins/steps/jquery.steps.min.js"></script>
+    <script src="/includes/js/plugins/steps/jquery.steps.js"></script>
     <script src="/includes/js/plugins/validate/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {

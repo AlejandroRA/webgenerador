@@ -111,17 +111,24 @@
             $('.contenido-conf').html(data);
         });
         $('.contenido-conf').show('slice');
+        $('.contenido-ini').hide('slice');
+        $('.contenido-ver').hide('slice');
+        
         
     }
 
-    function verCuestionario(id){
+ 
+   function verCuestionario(id){
         $('.contenido-ini').hide('slice');
         $.post('/index.cfm/cuestionarios/cuestionarios/verCuestionario',{
             id : id
         },function(data){
-            $('.contenido-conf').html(data);
+            $('.contenido-ver').html(data);
         });
-        $('.contenido-conf').show('slice');
+        $('.contenido-ver').show('slice');
+      //  $('.contenido-ini').hide('slice');
+       // $('.contenido-conf').hide('slice');
         
     }
+
 </script>
