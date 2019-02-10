@@ -1,5 +1,16 @@
-<!-- <cfdump var="#prc#"> -->
-<head>
+ <!----
+* =========================================================================
+* IPN - ESCOM
+* Trabajo Terminal
+* Modulo: Principal
+* Sub modulo: Layout principal
+* Fecha: Agosto 18, 2018
+* Descripcion: Modulo de captura de cuestionario
+* Autor: Lucia Ramirez
+* =========================================================================
+---->
+<!--- <cfdump var="#prc#">
+ ---><head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +24,7 @@
     <link href="/includes/css/style.css" rel="stylesheet">
 
 </head>
-<cfset funcimg3 = ImageCreateCaptcha(35,250,"#session.cbstorage.captcha#","low","serif,sansserif", "24")>
+<cfset funcimg3 = ImageCreateCaptcha(35,250,"#session.captura.captcha#","low","serif,sansserif", "24")>
 <body class="gray-bg">
 
     <div class="middle-box text-center loginscreen animated fadeInDown">

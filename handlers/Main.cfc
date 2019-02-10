@@ -38,23 +38,20 @@
 	function onRequestStart(event,rc,prc){
 
 		 baseUrl='http#iif(CGI.SERVER_PORT_SECURE,"s","")#://#CGI.SERVER_NAME#:#cgi.SERVER_PORT#/index.cfm/main';
+		// baseUrl='http#iif(CGI.SERVER_PORT_SECURE,"s","")#://#CGI.SERVER_NAME#:#cgi.SERVER_PORT#/index.cfm/main';
+		baseCuestionario='http#iif(CGI.SERVER_PORT_SECURE,"s","")#://#CGI.SERVER_NAME#:#cgi.SERVER_PORT#/index.cfm/cuestionarios/cuestionarios/captura';
 		
  
 		
-		 // writeDump(rc.event);
-		 // writeDump(ArrayContains(application.urlAllowed,rc.event));
-		 // if(ArrayContains(application.urlAllowed,rc.event)){
-		 // 	writeDump("cierto");
-		 // }
-
+		 
 		 /*Este codigo se encarga de validar que peticiones puede consultar el usuario que se encuentre loggeado y cuales no*/
 		 if((NOT structKeyExists(session, "cbstorage") OR structKeyExists(session.cbstorage, "usuario") 
 					AND StructIsEmpty(Session.cbstorage))
 				AND (NOT ArrayContains(application.urlAllowed,rc.event))) {
-		 	writeDump(baseUrl);
+		 	//writeDump(baseUrl);
 					location(url=baseUrl);
 								
-			}	
+			}
 	}
 
 	function onRequestEnd(event,rc,prc){

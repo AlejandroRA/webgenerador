@@ -59,6 +59,8 @@
 	$(document).ready(function(){
 		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable();
 		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable('hideColumn','id');
+		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable('hideColumn','clase');
+		
 		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable('hideColumn','obligada');
 		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable('hideColumn','orden');
 		$('#<cfoutput>#prc.nombretabla#</cfoutput>').bootstrapTable('hideColumn','tipo_p');

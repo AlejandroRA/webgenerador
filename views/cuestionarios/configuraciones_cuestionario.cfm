@@ -1,5 +1,5 @@
 <cfprocessingdirective pageEncoding="utf-8">
-<div class="panel panel-info">
+<div class="panel panel-success">
     <div class="panel-heading titulo-panel">
         <!--- <cfoutput>#prc.cuestionarios.nombre# - #prc.cuestionarios.descripcion#</cfoutput> --->
         <h3>Detalles de cuestionario

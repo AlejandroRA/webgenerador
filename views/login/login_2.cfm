@@ -13,7 +13,8 @@
 <cfset foot="Sistema Web Generador de Cuestionarios para Análisis Estadístico">
 <!DOCTYPE html>
 <html>
-
+<!--- <cfset baseCuestionario='http#iif(CGI.SERVER_PORT_SECURE,"s","")#://#CGI.SERVER_NAME#:#cgi.SERVER_PORT#/index.cfm/cuestionarios/cuestionarios/captura'>
+<cfdump var="#baseCuestionario#"> --->
 <head>
 
     <meta charset="utf-8">

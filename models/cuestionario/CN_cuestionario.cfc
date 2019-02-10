@@ -162,6 +162,20 @@ component extends="coldbox.system.EventHandler"{
 
 
 	}
+
+	function guardaRespuesta(valores){
+		var formulario = valores['formularios'];
+		var cuestionario = valores['cuestionarios'];
+		var usuario = daoCuestionario.generarUser();
+		for(i = 1; i <= arrayLen(formulario);i++){
+			daoCuestionario.guardaRes(formulario[i].id,usuario, formulario[i].respuesta)
+		}
+		for(i = 1; i <= arrayLen(cuestionario);i++){
+			daoCuestionario.guardaRes(cuestionario[i].id,usuario, cuestionario[i].respuesta)
+		}
+		
+		return 1;
+	}
 		
 
 	

@@ -1,3 +1,15 @@
+<!----
+* =========================================================================
+* IPN - ESCOM
+* Trabajo Terminal
+* Modulo: Principal
+* Sub modulo: Layout principal
+* Fecha: Agosto 18, 2018
+* Descripcion: Catalogo de cuestionarios
+* Autor: Lucia Ramirez
+* =========================================================================
+---->
+<cfprocessingdirective pageEncoding="utf-8">
 <style type="text/css">
     .responsive {
         max-width: 50%;
@@ -14,6 +26,7 @@
         margin-right: 35px;
     }
 </style>
+<cfset baseCuestionario='http#iif(CGI.SERVER_PORT_SECURE,"s","")#://#CGI.SERVER_NAME#:#cgi.SERVER_PORT#/index.cfm/cuestionarios/cuestionarios/responderCuestionario?id='>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <cfoutput>
@@ -49,9 +62,10 @@
 
                             <p>
                                 <!--- <a href="##" class="btn btn-xs btn-default">Ver <i class="fa fa-long-arrow-right"></i> </a> --->
-                                <button onclick="verCuestionario('#prc.cuestionarios.id[i]#');" class="btn btn-xs btn-primary">Enlace <i class="fa fa-link"></i> </button>
+                                <button onclick="enlaceCuestionario('#prc.cuestionarios.id[i]#');" class="btn btn-xs btn-primary">Enlace <i class="fa fa-link"></i> </button>
                                 <button onclick="mostrarDetalles('#prc.cuestionarios.id[i]#')" class="btn btn-xs btn-success">Detalles <i class="fa fa-list-ol"></i> </button>
                                 <button onclick="editarDatosGeneralesCuestionario('#prc.cuestionarios.id[i]#')" class="btn btn-xs btn-warning">Editar <i class="fa fa-edit"></i> </button>
+                                <button onclick="analisisCuestionario('#prc.cuestionarios.id[i]#')" class="btn btn-xs btn-default">Análisis <i class="    fa fa-line-chart"></i> </button>
                             </p>
                             <p>
                                 
@@ -70,6 +84,32 @@
     </div>
 </div>
 <script type="text/javascript">
+    function analisisCuestionario(id){
+        $('.contenido-ini').hide('slice');
+        $.post('/index.cfm/cuestionarios/cuestionarios/analisisCuestionario',{
+            id : id
+        },function(data){
+            $('.contenido-conf').html(data);
+        });
+        $('.contenido-conf').show('slice');
+        $('.contenido-ini').hide('slice');
+        $('.contenido-ver').hide('slice');
+        
+        
+    }
+
+    function enlaceCuestionario(id){
+            swal({
+                    title: "Enlace a cuestionario",
+                    text: '<cfoutput>#baseCuestionario#</cfoutput>'+id,
+                    type: "info",
+                   // showCancelButton: true,
+                  //  confirmButtonColor: "#DD6B55",
+                   // cancelButtonText: "Cancelar",
+                    confirmButtonText: "Aceptar"
+                    //closeOnConfirm: false
+                });
+        }
     
     function eliminarCuestionario(id){
             swal({
@@ -102,6 +142,8 @@
             });
 
     }
+
+    
 
     function mostrarDetalles(id){
         $('.contenido-ini').hide('slice');

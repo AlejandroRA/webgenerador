@@ -321,6 +321,28 @@ component extends="coldbox.system.EventHandler"{
 		return result.getProcResultSets().cursor;
 	}
 
+	function generarUser(){
+		var spService = new storedproc(); 
+		spService.setDatasource("DS_TT"); 
+		spService.setProcedure("pkg_user.insertar_user"); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="out",variable="user"); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="out",variable="bandera"); 
+		result = spService.execute();
+		return result.getprocOutVariables().user; ;
+	}
+	function guardaRes(pregunta,usuario,respuesta){
+		var spService = new storedproc(); 
+		spService.setDatasource("DS_TT"); 
+		spService.setProcedure("pkg_respuesta.insertar_respuesta"); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="in", value=pregunta); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="in", value=usuario); 
+		spService.addParam(cfsqltype="cf_sql_varchar",type="in", value=respuesta); 
+		spService.addParam(cfsqltype="cf_sql_numeric",type="out",variable="bandera"); 
+		result = spService.execute();
+		return result.getprocOutVariables().bandera; ;
+	}
+
+
 
 	
 

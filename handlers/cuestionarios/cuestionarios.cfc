@@ -141,12 +141,25 @@ component extends="coldbox.system.EventHandler"{
 	}
 
 	function responderCuestionario(event, rc, prc){
-		prc.cuestionario = cnCuestionarios.consultarCuestionarioCaptura( rc.id);
-		session.cbstorage.captcha = cnCuestionarios.generateString();
+		StructDelete(session, "captura",true);
+		session.captura.id_cuestionario = rc.id;
+		session.captura.captcha = cnCuestionarios.generateString();
+		prc.cuestionario = cnCuestionarios.consultarCuestionarioCaptura(session.captura.id_cuestionario);
 		event.setView("/captura/cuestionario").noLayout();
 	}
 	function captura(event, rc, prc){
-		prc.cuestionario = cnCuestionarios.captura(rc.id, session.cbstorage.captcha, rc.captcha_to, rc.clave);
+		// writeDump(session);
+		// 	abort;
+		 if( structKeyExists(session, "captura") and structKeyExists(session.captura, "validado")){
+			prc.cuestionario = session.captura.cuestionario;
+			event.setView(view='/captura/captura', layout='Captura');
+		}else if(NOT structKeyExists(session, "captura") ){
+			runEvent("Main.index");
+
+		}else{
+
+		prc.cuestionario = cnCuestionarios.captura(session.captura.id_cuestionario, session.captura.captcha, rc.captcha_to, rc.clave);
+		
 		if(prc.cuestionario.estado eq 2){
 			getInstance( "MessageBox@cbmessagebox" ).setMessage("error","El captcha ingresado es incorrecto.");
 			runEvent("cuestionarios.cuestionarios.responderCuestionario");
@@ -155,8 +168,24 @@ component extends="coldbox.system.EventHandler"{
 			getInstance( "MessageBox@cbmessagebox" ).setMessage("error","La clave de acceso de incorrecta.");
 			runEvent("cuestionarios.cuestionarios.responderCuestionario");
 		}else{
+			session.captura.validado = 1;
+			session.captura.cuestionario = prc.cuestionario;
 			event.setView(view='/captura/captura', layout='Captura');
 		}
+		}
+	}
+
+	function registrarCapturaCuestionario(event, rc, prc){
+		resultado = cnCuestionarios.guardaRespuesta(DeserializeJSON(rc.valores));
+		StructDelete(session, "captura",true);
+		event.renderData(type="json", data=resultado);
+		
+		// writeDump(DeserializeJSON(rc.valores));
+		// abort;
+	}
+
+	function analisisCuestionario(event, rc, prc){
+		event.setView(view='/cuestionarios/analisis_cuestionario').noLayout();
 	}
 
 
